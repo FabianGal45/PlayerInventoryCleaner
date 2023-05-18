@@ -6,7 +6,7 @@ public class PlayerInventoryCleaner {
     public static void main(String[] args) {
         long startTime = System.currentTimeMillis();
 
-        String directoryPath = "E:/Games/Minecraft/Servers/NewServer/9.1.2 - Preparation Server/world/playerdata";
+        String directoryPath = "E:/Games/Minecraft/Servers/NewServer/9.2.7 - SERVER - Copy/world/playerdata";
 
         // Multithreaded
         ParallelStreamFileProcessor parallelStreamFileProcessor = new ParallelStreamFileProcessor();

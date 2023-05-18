@@ -42,6 +42,9 @@ public class ParallelStreamFileProcessor {
                 CompoundTag clone = NBT.fromFile(file);
                 ListTag<Tag> inventory = clone.getList("Inventory");
                 inventory.clear();
+
+                ListTag<Tag> enderChest = clone.getList("EnderItems");
+                enderChest.clear();
                 NBT.toFile(clone, file, CompressionType.GZIP);
 
             } catch (IOException e) {

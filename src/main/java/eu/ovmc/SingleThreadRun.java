@@ -46,26 +46,7 @@ public class SingleThreadRun {
 
                 NBT.toFile(clone, file, CompressionType.GZIP);
 
-//                Tag tag = NBTUtil.read(file);
-//                CompoundTag compoundTag = (CompoundTag) tag;
-//                System.out.println("Food: " +compoundTag.getInt("foodLevel"));
-//
-//                ListTag inventory = compoundTag.getList("Inventory");
-//
-//                int itemCount = 0;
-//
-//                for(Tag iTag: inventory){
-//                    CompoundTag iCTag = (CompoundTag) iTag;
-//                    itemCount++;
-//                }
-//
-//                System.out.println("itemCount: "+ itemCount);
-////                inventory.clear();
-//                System.out.println("size: " +inventory.size());
-//
-//
-//
-//                NBTUtil.write(file,tag);
+
 
             }
         }
