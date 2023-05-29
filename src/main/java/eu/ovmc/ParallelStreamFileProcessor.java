@@ -6,7 +6,10 @@ import dev.dewy.nbt.api.Tag;
 import dev.dewy.nbt.io.CompressionType;
 import dev.dewy.nbt.tags.collection.CompoundTag;
 import dev.dewy.nbt.tags.collection.ListTag;
+import dev.dewy.nbt.tags.primitive.DoubleTag;
+import dev.dewy.nbt.tags.primitive.StringTag;
 
+import javax.swing.plaf.ComponentUI;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -35,17 +38,31 @@ public class ParallelStreamFileProcessor {
 
     private void processFile(File file) {
         // process file logic goes here
-        System.out.println("Processing file: " + file.getName() + " on thread " + Thread.currentThread().getName());
+//        System.out.println("Processing file: " + file.getName() + " on thread " + Thread.currentThread().getName());
 
         if(file.toString().endsWith(".dat")) {
             try {
-                CompoundTag clone = NBT.fromFile(file);
-                ListTag<Tag> inventory = clone.getList("Inventory");
-                inventory.clear();
+                CompoundTag root = NBT.fromFile(file);
+                ListTag<Tag> inventory = root.getList("Inventory");
+//                inventory.clear();
 
-                ListTag<Tag> enderChest = clone.getList("EnderItems");
-                enderChest.clear();
-                NBT.toFile(clone, file, CompressionType.GZIP);
+                ListTag<Tag> enderChest = root.getList("EnderItems");
+//                enderChest.clear();
+
+                //set balance to 0
+                CompoundTag bukkitValues = root.getCompound("BukkitValues");
+                DoubleTag balance = bukkitValues.getDouble("diamondbank:balance");
+                StringTag playerName = root.getCompound("bukkit").getString("lastKnownName");
+                System.out.println("> "+ playerName +" "+balance);
+
+
+                //set position
+
+
+
+                //remove unused accounts
+
+                NBT.toFile(root, file, CompressionType.GZIP);
 
             } catch (IOException e) {
                 e.printStackTrace();
