@@ -16,12 +16,16 @@ public class PlayerInventoryCleaner {
 //        parallelStreamFileProcessor.processFiles(directoryPath);
 
         //SignleThreaded
-        SingleThreadRun singleThreadRun = new SingleThreadRun(directoryPath, cmiPath, authPath, luckPath);
-        try {
-            singleThreadRun.processFiles();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        SingleThreadRun singleThreadRun = new SingleThreadRun(directoryPath, cmiPath, authPath, luckPath);
+//        try {
+//            singleThreadRun.processFiles();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
+        //remove Effects from players
+        EffectRemove effectRemove = new EffectRemove(directoryPath);
+        effectRemove.removeEffectsFromAllPlayers();
 
 
         long endTime = System.currentTimeMillis();
